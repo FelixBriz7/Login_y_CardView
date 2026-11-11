@@ -103,4 +103,16 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/button_cardView_volver"
+        android:layout_width="263dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
