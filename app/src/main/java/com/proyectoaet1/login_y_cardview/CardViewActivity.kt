@@ -1,5 +1,6 @@
 package com.proyectoaet1.login_y_cardview
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.proyectoaet1.login_y_cardview.databinding.ActivityCardViewBinding
@@ -30,6 +31,19 @@ class CardViewActivity : AppCompatActivity() {
         cardViewBinding.textViewCardViewBienvenida.text = "Bienvenido, $usuario";
         cardViewBinding.textViewCardViewUsuario.text = "Usuario: $usuario";
         cardViewBinding.textViewCardViewPassword.text = "Contraseña: $password";
+
+        /*
+        Boton Volver. Regresa a LoginActivity. Con los mismos flags evitamos
+        duplicar pantallas: si el Login ya estaba abierto se reutiliza
+         */
+
+        cardViewBinding.buttonCardViewVolver.setOnClickListener {
+
+            val intent = Intent(this, LoginActivity::class.java);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+
+        }
 
     }
 }

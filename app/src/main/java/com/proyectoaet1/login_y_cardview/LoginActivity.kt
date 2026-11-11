@@ -16,8 +16,8 @@ class LoginActivity : AppCompatActivity() {
     comparamos lo que escribe el usuario al pulsar el boton Validar
      */
 
-    private val MYUSER = "MYUSER";
-    private val MYPASS = "MYPASS";
+    private val MYUSER = "admin";
+    private val MYPASS = "1234";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(loginBinding.root);
 
         /*
-        Boton Validar. Guardamos lo que ha escrito el usuario (quitando los espacios
+        Boton Validar Guardamos lo que ha escrito el usuario (quitando los espacios
         del principio y del final con trim) y lo comparamos con MYUSER y MYPASS
          */
 
@@ -38,17 +38,21 @@ class LoginActivity : AppCompatActivity() {
 
             if (usuario == MYUSER && password == MYPASS) {
 
-                //Validacion correcta: Intent explicito hacia CardViewActivity
+                //Validacion correcta Intent explicito hacia CardViewActivity
                 //y le pasamos el usuario y la contraseña con putExtra
 
                 val intent = Intent(this, CardViewActivity::class.java);
                 intent.putExtra("extra_usuario", usuario);
                 intent.putExtra("extra_password", password);
+
+                //Con estos flags evitamos duplicar pantallas: si la Activity ya
+                //estaba abierta se reutiliza en vez de crear otra encima
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
 
             } else {
 
-                //Validacion incorrecta: avisamos con un Toast
+                //Validacion incorrecta avisamos con un Toast
 
                 Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
 
